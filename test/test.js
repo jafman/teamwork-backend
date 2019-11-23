@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const { assert } = require('chai');
 
 const run1 = () => 'run';

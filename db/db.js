@@ -5,7 +5,7 @@ const config = {
   user: process.env.USER,
   database: process.env.DB,
   password: process.env.DB_PASSWORD,
-  port: process.env.PORT,
+  port: process.env.DB_PORT,
   max: process.env.MAX_DB_CONNECTION, // max number of connection can be open to database
   idleTimeoutMillis: process.env.IDLE_TIMEOUT,
   // how long a client is allowed to remain idle before being closed

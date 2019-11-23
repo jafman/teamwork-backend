@@ -1,19 +1,23 @@
 const pool = require('./db');
 
-module.exports.createEmployee = (fullname, email, password, createdOn) => {
+
+exports.createEmployee = (fullname, email, password) => {
   pool.connect((error, client, done) => {
     if (error) throw error;
-    const queryString = 'INSERT INTO employee (fullname, email, password, created_on) VALUES ($1,$2,$3,$4)';
-    const valueString = [fullname, email, password, createdOn];
+    const queryString = 'INSERT INTO employee (full_name, email, password, created_on) VALUES ($1,$2,$3,NOW())';
+    const valueString = [fullname, email, password];
+
     client.query(queryString, valueString, (err, res) => {
       done();
       if (err) {
         console.log(err.stack);
       } else {
         console.log(res.rows[0]);
-        return true;
+        // return true;
       }
-      return false;
+      // return false;
     });
   });
+  console.log('SUCCESS!');
+  return true;
 };

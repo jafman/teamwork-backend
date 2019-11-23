@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
-const employee = require('../db/employee');
+const employee = require('../db/users');
 
 
 // eslint-disable-next-line no-unused-vars
-exports.createEmployee = (req, res, next) => {
+exports.createUser = (req, res, next) => {
   const userFullName = req.body.fullName;
   const userEmail = req.body.email;
   const password = req.body.password;

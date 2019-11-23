@@ -5,7 +5,7 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
-const employeeRoute = require('./routes/employee');
+const userRoute = require('./routes/users');
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,6 +22,6 @@ app.use(bodyParser.urlencoded({
 }));
 */
 
-app.use('/create-user', employeeRoute);
+app.use('/create-user', userRoute);
 
 module.exports = app;

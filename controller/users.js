@@ -27,9 +27,12 @@ exports.createUser = (req, res, next) => {
         .catch(
           (error) => {
             console.log(error.stack);
+            // console.log(error);
+            const msg2 = error.message ? error.message : error;
+            const msg1 = error.detail ? error.detail : error;
             res.status(500).json({
               status: 'error',
-              error: error.detail ? error.detail : error
+              error: msg1 === error ? msg2 : msg1
             });
           }
         );

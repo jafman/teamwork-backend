@@ -22,6 +22,6 @@ app.use(bodyParser.urlencoded({
 }));
 */
 
-app.use('/create-user', userRoute);
+app.use('/auth', userRoute);
 
 module.exports = app;

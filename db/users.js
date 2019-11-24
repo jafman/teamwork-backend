@@ -49,7 +49,6 @@ exports.signinUser = (email, password) => {
                 reject(new Error('Invalid Password!'));
               } else {
                 resolve({
-                  token: '128hhju',
                   userId: res.rows[0].id
                 });
               }

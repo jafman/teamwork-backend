@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const users = require('../db/users');
 
 
@@ -50,7 +51,9 @@ exports.createUser = (req, res, next) => {
 
 exports.signinUser = (req, res, next) => {
   users.signinUser(req.body.email, req.body.password).then(
-    ({ token, userId }) => {
+    ({ userId }) => {
+      const token = jwt.sign({ userId }, process.env.JWTPUBLICKEY, { expiresIn: '24h' });
+      // console.log(`JWT KEY IS: ${process.env.JWTKEY}`);
       res.status(201).json({
         status: 'success',
         data: { token, userId }

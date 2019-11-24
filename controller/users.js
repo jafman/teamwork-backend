@@ -1,23 +1,25 @@
 const bcrypt = require('bcrypt');
-const employee = require('../db/users');
+const users = require('../db/users');
 
 
 // eslint-disable-next-line no-unused-vars
 exports.createUser = (req, res, next) => {
-  const userFullName = req.body.fullName;
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
   const userEmail = req.body.email;
   const password = req.body.password;
+  const gender = req.body.gender;
+  const jobRole = req.body.jobRole;
+  const department = req.body.department;
+  const address = req.body.address;
   bcrypt.hash(password, 10).then(
     (hash) => {
-      employee.createEmployee(userFullName, userEmail, hash)
+      users.createUser(firstName, lastName, userEmail, hash, gender, jobRole, department, address)
         .then(
-          ({ fullName, email }) => {
+          ({ message, token, userId }) => {
             res.status(201).json({
               status: 'success',
-              data: {
-                fullName,
-                email
-              }
+              data: { message, token, userId }
             });
           }
         )
